@@ -2,34 +2,53 @@ import { useState } from "react";
 import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [started, setStarted] = useState(false);
 
-  return (
-    <div className="app">
-      <nav className="navbar">
-        <h2>🚀 DevOps Dashboard</h2>
-        <span>Vite + React</span>
-      </nav>
+  if (!started) {
+    return (
+      <div className="landing">
+        <div className="hero">
+          <h1 className="title">
+            Welcome to <span>DevOps World</span> 🚀
+          </h1>
 
-      <main className="content">
-        <h1>Hello Fahad 👋</h1>
-        <p>
-          This app is built using <b>React + Vite</b> and deployed via CI/CD.
-        </p>
+          <p className="subtitle">
+            Build • Deploy • Monitor • Scale
+          </p>
 
-        <div className="card">
-          <h3>Counter Demo</h3>
-          <p>Current count: <b>{count}</b></p>
-          <div className="btn-group">
-            <button onClick={() => setCount(count + 1)}>Increment</button>
-            <button onClick={() => setCount(0)}>Reset</button>
+          <div className="actions">
+            <button className="primary" onClick={() => setStarted(true)}>
+              Get Started
+            </button>
+            <button className="secondary">
+              View GitHub
+            </button>
+          </div>
+
+          <div className="stats">
+            <div>
+              <h3>⚙️ CI/CD</h3>
+              <p>Automated Pipelines</p>
+            </div>
+            <div>
+              <h3>☁️ Cloud</h3>
+              <p>AWS Deployment</p>
+            </div>
+            <div>
+              <h3>📊 Monitoring</h3>
+              <p>Grafana + Prometheus</p>
+            </div>
           </div>
         </div>
-      </main>
+      </div>
+    );
+  }
 
-      <footer className="footer">
-        <p>© 2025 | Deployed on AWS EC2 🚀</p>
-      </footer>
+  return (
+    <div className="dashboard">
+      <h1>Dashboard Loaded ✅</h1>
+      <p>This page is rendered after interaction.</p>
+      <button onClick={() => setStarted(false)}>⬅ Back</button>
     </div>
   );
 }
